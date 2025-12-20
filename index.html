@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Fonksiyonel programlama tabanlı spreadsheet uygulaması">
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Fonksiyonel Programlama Spreadsheet</title>
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header class="header">
+      <h1><i class="fas fa-calculator"></i> Fonksiyonel Spreadsheet</h1>
+      <p>JavaScript & Fonksiyonel Programlama ile Güçlendirilmiş</p>
+    </header>
+
+    <!-- Info Panel -->
+    <div class="info-panel">
+      <div class="info-content">
+        <div class="shortcuts">
+          <div class="shortcut-item">
+            <i class="fas fa-mouse-pointer"></i>
+            <span>Gezin:</span>
+            <span class="shortcut-key">Ok Tuşları</span>
+          </div>
+          <div class="shortcut-item">
+            <i class="fas fa-edit"></i>
+            <span>Düzenle:</span>
+            <span class="shortcut-key">Enter/F2</span>
+          </div>
+          <div class="shortcut-item">
+            <i class="fas fa-save"></i>
+            <span>Kaydet:</span>
+            <span class="shortcut-key">Ctrl+S</span>
+          </div>
+          <div class="shortcut-item">
+            <i class="fas fa-history"></i>
+            <span>Geri Al:</span>
+            <span class="shortcut-key">Ctrl+Z</span>
+          </div>
+          <div class="shortcut-item">
+            <i class="fas fa-redo"></i>
+            <span>İleri Al:</span>
+            <span class="shortcut-key">Ctrl+Y</span>
+          </div>
+        </div>
+        <div class="info-stats">
+          <span id="selectedCount">0 hücre seçili</span>
+          <span id="formulaCount">0 formül</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Controls Section -->
+    <div class="controls">
+      <button class="control-btn select" id="selectBtn">
+        <i class="fas fa-mouse-pointer"></i> Seçim Modu
+      </button>
+      <button class="control-btn merge" id="mergeBtn">
+        <i class="fas fa-object-group"></i> Hücre Birleştir
+      </button>
+      <button class="control-btn unmerge" id="unmergeBtn">
+        <i class="fas fa-object-ungroup"></i> Birleşimi Kaldır
+      </button>
+      <button class="control-btn copy" id="copyBtn">
+        <i class="fas fa-copy"></i> Kopyala
+      </button>
+      <button class="control-btn paste" id="pasteBtn">
+        <i class="fas fa-paste"></i> Yapıştır
+      </button>
+      
+      <!-- YENİ BUTONLAR -->
+      <button class="control-btn undo" id="undoBtn">
+        <i class="fas fa-undo"></i> Geri Al
+      </button>
+      <button class="control-btn redo" id="redoBtn">
+        <i class="fas fa-redo"></i> İleri Al
+      </button>
+      <button class="control-btn performance" id="perfBtn">
+        <i class="fas fa-tachometer-alt"></i> Performans
+      </button>
+      <button class="control-btn errors" id="errorBtn">
+        <i class="fas fa-exclamation-triangle"></i> Hatalar
+      </button>
+      
+      <!-- MEVCUT BUTONLAR -->
+      <button class="control-btn export" id="exportBtn">
+        <i class="fas fa-file-export"></i> CSV Dışa Aktar
+      </button>
+      <button class="control-btn clear" id="clearBtn">
+        <i class="fas fa-eraser"></i> Tümünü Temizle
+      </button>
+      <button class="control-btn help" id="helpBtn">
+        <i class="fas fa-question-circle"></i> Yardım
+      </button>
+      <button class="control-btn theme" id="themeBtn">
+    <i class="fas fa-moon"></i> Tema Değiştir
+</button>
+      <button class="control-btn demo" id="demoBtn">
+        <i class="fas fa-rocket"></i> Demo Veriler
+      </button>
+    </div>
+
+    <!-- Formula Bar -->
+    <div class="formula-bar">
+      <div class="cell-display" id="currentCellDisplay">A1</div>
+      <input type="text" id="formulaInput" placeholder="Formül girin (örn: =SUM(A1:A3))">
+      <button id="applyFormulaBtn">Uygula</button>
+    </div>
+
+    <!-- Main Spreadsheet Container -->
+    <div class="spreadsheet-wrapper">
+      <div id="container">
+        <div class="loading">Spreadsheet yükleniyor...</div>
+      </div>
+      <!-- Status bar JavaScript ile eklenecek -->
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p><i class="fas fa-code"></i> Saf JavaScript ile geliştirildi • Fonksiyonel Programlama Yaklaşımı</p>
+    </footer>
+
+    <!-- Tooltip div'i (JavaScript ile kullanılacak) -->
+    <div id="tooltip" class="tooltip"></div>
+
+    <!-- Script dosyaları -->
+    <script src="./errorHandler.js"></script>
+    <script src="./script.js"></script>
+
+    <!-- Ekstra script'ler -->
+    <script>
+      // Sayfa yüklendiğinde loading mesajını kaldırır
+      window.addEventListener('load', function() {
+        const loading = document.querySelector('.loading');
+        if (loading) {
+          setTimeout(() => {
+            loading.style.display = 'none';
+            // Sayfa yüklendiğinde spreadsheet'i başlat
+            if (typeof initializeSpreadsheet === 'function') {
+              initializeSpreadsheet();
+            }
+          }, 1000);
+        }
+      });
+
+      // Global error handler
+      window.addEventListener('error', function(e) {
+        console.error('Global hata:', e.error);
+        showTooltipMessage('Hata oluştu: ' + e.error.message, 'error');
+      });
+
+      // Klavye kısayolları
+      document.addEventListener('keydown', function(e) {
+        // Undo: Ctrl+Z
+        if (e.ctrlKey && e.key === 'z') {
+          e.preventDefault();
+          if (typeof undoAction === 'function') {
+            undoAction();
+          }
+        }
+        
+        // Redo: Ctrl+Y veya Ctrl+Shift+Z
+        if ((e.ctrlKey && e.key === 'y') || (e.ctrlKey && e.shiftKey && e.key === 'Z')) {
+          e.preventDefault();
+          if (typeof redoAction === 'function') {
+            redoAction();
+          }
+        }
+        
+        // F9: Test fonksiyonu
+        if (e.key === 'F9') {
+          e.preventDefault();
+          if (typeof runExcelTest === 'function') {
+            runExcelTest();
+          }
+        }
+        
+        // Ctrl+S: CSV export
+        if (e.ctrlKey && e.key === 's') {
+          e.preventDefault();
+          if (typeof exportToCSV === 'function') {
+            exportToCSV();
+          }
+        }
+        
+        // Ctrl+M: Merge
+        if (e.ctrlKey && e.key === 'm') {
+          e.preventDefault();
+          if (typeof mergeCells === 'function') {
+            mergeCells();
+          }
+        }
+        
+        // Ctrl+U: Unmerge
+        if (e.ctrlKey && e.key === 'u') {
+          e.preventDefault();
+          if (typeof unmergeCells === 'function') {
+            unmergeCells();
+          }
+        }
+        
+        // Ctrl+P: Performance
+        if (e.ctrlKey && e.key === 'p') {
+          e.preventDefault();
+          if (typeof showPerformance === 'function') {
+            showPerformance();
+          }
+        }
+        
+        // Ctrl+E: Show errors
+        if (e.ctrlKey && e.key === 'e') {
+          e.preventDefault();
+          if (typeof showErrors === 'function') {
+            showErrors();
+          }
+        }
+      });
+
+      // Formül input'u için enter tuşu desteği
+      document.addEventListener('DOMContentLoaded', function() {
+        const formulaInput = document.getElementById('formulaInput');
+        const applyFormulaBtn = document.getElementById('applyFormulaBtn');
+        
+        if (formulaInput) {
+          formulaInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+              e.preventDefault();
+              applyFormula();
+            }
+          });
+        }
+        
+        if (applyFormulaBtn) {
+          applyFormulaBtn.addEventListener('click', applyFormula);
+        }
+      });
+
+      // Buton event listener'ları
+      document.addEventListener('DOMContentLoaded', function() {
+        // Buton referansları
+        const undoBtn = document.getElementById('undoBtn');
+        const redoBtn = document.getElementById('redoBtn');
+        const perfBtn = document.getElementById('perfBtn');
+        const errorBtn = document.getElementById('errorBtn');
+        const exportBtn = document.getElementById('exportBtn');
+        const clearBtn = document.getElementById('clearBtn');
+        const helpBtn = document.getElementById('helpBtn');
+        const demoBtn = document.getElementById('demoBtn');
+        const selectBtn = document.getElementById('selectBtn');
+        const mergeBtn = document.getElementById('mergeBtn');
+        const unmergeBtn = document.getElementById('unmergeBtn');
+        const copyBtn = document.getElementById('copyBtn');
+        const pasteBtn = document.getElementById('pasteBtn');
+        
+        // Event listener'lar
+        if (undoBtn) undoBtn.addEventListener('click', () => {
+          if (typeof undoAction === 'function') undoAction();
+        });
+        
+        if (redoBtn) redoBtn.addEventListener('click', () => {
+          if (typeof redoAction === 'function') redoAction();
+        });
+        
+        if (perfBtn) perfBtn.addEventListener('click', () => {
+          if (typeof showPerformance === 'function') showPerformance();
+        });
+        
+        if (errorBtn) errorBtn.addEventListener('click', () => {
+          if (typeof showErrors === 'function') showErrors();
+        });
+        
+        if (exportBtn) exportBtn.addEventListener('click', () => {
+          if (typeof exportToCSV === 'function') exportToCSV();
+        });
+        
+        if (clearBtn) clearBtn.addEventListener('click', () => {
+          if (typeof clearAll === 'function') clearAll();
+        });
+        
+        if (helpBtn) helpBtn.addEventListener('click', () => {
+          if (typeof showHelp === 'function') showHelp();
+        });
+        // Tema butonu event listener'ı - GÜNCELLENMİŞ
+const themeBtn = document.getElementById('themeBtn');
+if (themeBtn) {
+    // Sayfa yüklendiğinde buton ikonunu güncelle
+    setTimeout(() => {
+        const currentTheme = document.body.getAttribute('data-theme') || 'light';
+        updateThemeButtonIcon(currentTheme);
+    }, 100);
+    
+    themeBtn.addEventListener('click', () => {
+        if (typeof toggleTheme === 'function') {
+            toggleTheme();
+            
+            // Tema değişikliği sonrası buton ikonunu güncelle
+            setTimeout(() => {
+                const newTheme = document.body.getAttribute('data-theme') || 'light';
+                updateThemeButtonIcon(newTheme);
+            }, 50);
+        } else {
+            showTooltipMessage('Tema fonksiyonu henüz yüklenmedi!', 'warning');
+        }
+    });
+}
+
+function updateThemeButtonIcon(theme) {
+    const themeBtn = document.getElementById('themeBtn');
+    if (themeBtn) {
+        if (theme === 'dark') {
+            themeBtn.innerHTML = '<i class="fas fa-sun"></i> Aydınlık Mod';
+            themeBtn.title = 'Aydınlık temaya geç';
+        } else {
+            themeBtn.innerHTML = '<i class="fas fa-moon"></i> Karanlık Mod';
+            themeBtn.title = 'Karanlık temaya geç';
+        }
+    }
+}
+        
+        if (demoBtn) demoBtn.addEventListener('click', loadDemoData);
+        if (selectBtn) selectBtn.addEventListener('click', () => {
+          if (typeof startRangeSelection === 'function') startRangeSelection();
+        });
+        if (mergeBtn) mergeBtn.addEventListener('click', () => {
+          if (typeof mergeCells === 'function') mergeCells();
+        });
+        if (unmergeBtn) unmergeBtn.addEventListener('click', () => {
+          if (typeof unmergeCells === 'function') unmergeCells();
+        });
+        if (copyBtn) copyBtn.addEventListener('click', () => {
+          if (typeof copySelection === 'function') copySelection();
+        });
+        if (pasteBtn) pasteBtn.addEventListener('click', () => {
+          if (typeof pasteSelection === 'function') pasteSelection();
+        });
+      });
+
+      // Tooltip mesajı gösterme fonksiyonu
+      function showTooltipMessage(message, type = 'info') {
+        const tooltip = document.createElement('div');
+        tooltip.className = `tooltip-message ${type}`;
+        tooltip.textContent = message;
+        document.body.appendChild(tooltip);
+        
+        setTimeout(() => {
+          tooltip.style.opacity = '0';
+          setTimeout(() => {
+            if (tooltip.parentNode) {
+              tooltip.parentNode.removeChild(tooltip);
+            }
+          }, 300);
+        }, 3000);
+        
+        // Tooltip için stil ekle
+        if (!document.querySelector('#tooltip-styles')) {
+          const style = document.createElement('style');
+          style.id = 'tooltip-styles';
+          style.textContent = `
+            .tooltip-message.error {
+              background: #f44336;
+            }
+            .tooltip-message.success {
+              background: #4CAF50;
+            }
+            .tooltip-message.warning {
+              background: #ff9800;
+            }
+            .tooltip-message.info {
+              background: #2196F3;
+            }
+          `;
+          document.head.appendChild(style);
+        }
+      }
+
+      // Demo verilerini yükleme fonksiyonu
+      function loadDemoData() {
+        if (confirm('Demo verileri yüklemek istediğinize emin misiniz? Mevcut veriler silinecektir.')) {
+          // Önce temizle
+          if (typeof clearAll === 'function') {
+            clearAll();
+          }
+          
+          // Demo verilerini ayarla
+          const demoData = {
+            'A1': 'Satışlar',
+            'B1': 'Ocak',
+            'C1': 'Şubat', 
+            'D1': 'Mart',
+            'E1': 'Nisan',
+            'F1': 'TOPLAM',
+            
+            'A2': 'Ürün A',
+            'B2': '1000',
+            'C2': '1200',
+            'D2': '1500',
+            'E2': '1800',
+            'F2': '=SUM(B2:E2)',
+            
+            'A3': 'Ürün B',
+            'B3': '800',
+            'C3': '900',
+            'D3': '950',
+            'E3': '1100',
+            'F3': '=SUM(B3:E3)',
+            
+            'A4': 'Ürün C',
+            'B4': '1200',
+            'C4': '1300',
+            'D4': '1400',
+            'E4': '1600',
+            'F4': '=SUM(B4:E4)',
+            
+            'A5': 'TOPLAM',
+            'B5': '=SUM(B2:B4)',
+            'C5': '=SUM(C2:C4)',
+            'D5': '=SUM(D2:D4)',
+            'E5': '=SUM(E2:E4)',
+            'F5': '=SUM(F2:F4)',
+            
+            'A7': 'Ortalama:',
+            'B7': '=AVERAGE(B2:B4)',
+            'C7': '=AVERAGE(C2:C4)',
+            'D7': '=AVERAGE(D2:D4)',
+            'E7': '=AVERAGE(E2:E4)',
+            
+            'A9': 'Örnek Hatalar:',
+            'B9': '=1/0',
+            'C9': '#DIV_ZERO',
+            'B10': '=SYNTAX_ERROR(',
+            'C10': '#SYNTAX',
+            'B11': '=A1000+B1000',
+            'C11': '#REFERENCE',
+            'B12': '=CALC_TIMEOUT()',
+            'C12': '#CALC_TIMEOUT',
+            'B13': '=INFINITE_LOOP()',
+            'C13': '#CALC_INFINITE_LOOP'
+          };
+          
+          // Demo verilerini hücrelere yerleştir
+          Object.keys(demoData).forEach(cellId => {
+            const cell = document.getElementById(cellId);
+            if (cell) {
+              cell.value = demoData[cellId];
+              
+              // Formül ise sınıf ekle ve hesaplat
+              if (demoData[cellId].startsWith('=')) {
+                cell.classList.add('formula');
+                setTimeout(() => {
+                  const event = new Event('change');
+                  cell.dispatchEvent(event);
+                }, 100);
+              }
+              
+              // Hata değeri ise error sınıfı ekle
+              if (demoData[cellId].startsWith('#')) {
+                cell.classList.add('error');
+              }
+            }
+          });
+          
+          // A1 hücresini seç
+          const a1Cell = document.getElementById('A1');
+          if (a1Cell && typeof selectSingleCell === 'function') {
+            selectSingleCell(a1Cell);
+          }
+          
+          showTooltipMessage('Demo verileri yüklendi! Farklı hata türlerini gözlemleyebilirsiniz.', 'success');
+        }
+      }
+
+      // Yardımcı fonksiyonlar
+      function applyFormula() {
+        const formulaInput = document.getElementById('formulaInput');
+        if (formulaInput && typeof setCellValue === 'function') {
+          const selectedCell = document.querySelector('.selected');
+          if (selectedCell) {
+            setCellValue(selectedCell.id, formulaInput.value);
+            formulaInput.value = '';
+            showTooltipMessage('Formül uygulandı!', 'success');
+          } else {
+            showTooltipMessage('Lütfen önce bir hücre seçin.', 'warning');
+          }
+        }
+      }
+
+      // Başlangıçta demo butonuna stil ekle
+      const demoStyle = document.createElement('style');
+      demoStyle.textContent = `
+        .control-btn.demo {
+          background: #17a2b8;
+        }
+        
+        .control-btn.demo:hover {
+          background: #138496;
+        }
+      `;
+      document.head.appendChild(demoStyle);
+    </script>
+  </body>
+</html>

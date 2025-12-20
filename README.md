@@ -171,3 +171,8 @@ Dilediğiniz gibi kullanabilir, geliştirebilir ve paylaşabilirsiniz.
 ---
 
 💡 *Her türlü geri bildirim ve katkıya açıktır.*
+
+
+
+## Ekran Çıktısı 
+<img width="1895" height="885" alt="Speadsheet" src="https://github.com/user-attachments/assets/97908c74-bb46-42e9-bf4a-95064a8fac09" />

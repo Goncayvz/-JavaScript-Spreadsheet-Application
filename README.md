@@ -1,5 +1,5 @@
 
-**Gelişmiş Web Tabanlı Spreadsheet (Elektronik Tablo) Uygulaması**
+** 📊Gelişmiş Web Tabanlı Spreadsheet (Elektronik Tablo) Uygulaması**
 
 Bu proje, **freeCodeCamp Spreadsheet projesi** temel alınarak geliştirilmiş; tamamen **Vanilla JavaScript, HTML ve CSS** kullanılarak oluşturulmuş modern, hızlı ve fonksiyonel bir web tabanlı spreadsheet uygulamasıdır.
 

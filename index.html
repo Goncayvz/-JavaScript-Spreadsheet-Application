@@ -297,12 +297,6 @@ function updateThemeButtonIcon(theme) {
         if (selectBtn) selectBtn.addEventListener('click', () => {
           if (typeof startRangeSelection === 'function') startRangeSelection();
         });
-        if (mergeBtn) mergeBtn.addEventListener('click', () => {
-          if (typeof mergeCells === 'function') mergeCells();
-        });
-        if (unmergeBtn) unmergeBtn.addEventListener('click', () => {
-          if (typeof unmergeCells === 'function') unmergeCells();
-        });
         if (copyBtn) copyBtn.addEventListener('click', () => {
           if (typeof copySelection === 'function') copySelection();
         });
@@ -475,3 +469,4 @@ function updateThemeButtonIcon(theme) {
     </script>
   </body>
 </html>
+

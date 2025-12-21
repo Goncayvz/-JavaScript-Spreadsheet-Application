@@ -30,18 +30,13 @@ https://goncayvz.github.io/-JavaScript-Spreadsheet-Application
 ### 🎨 Modern & Responsive Arayüz
 
 * 🌙 Koyu / ☀️ Açık tema desteği
-* Çoklu hücre seçimi
-
-  * `Ctrl + Click`
-  * Sürükle & bırak
 * Formül çubuğu
 * Durum çubuğu (seçili hücre bilgileri)
 * Tam klavye navigasyonu:
-
   * Ok tuşları
   * Enter / Tab
   * F2 ile düzenleme
-
+  *Gelişmiş formül desteği
 ---
 
 ### 🔧 Profesyonel Araçlar
@@ -167,8 +162,7 @@ Uygulama, hızlı test ve öğrenme için hazır demo verileri içerir:
 ## 📄 Lisans
 
 Bu proje eğitim ve geliştirme amaçlıdır.
-Dilediğiniz gibi kullanabilir, geliştirebilir ve paylaşabilirsiniz.
-
+MIT Lisanslıdır.
 ---
 
 💡 *Her türlü geri bildirim ve katkıya açıktır.*
@@ -184,6 +178,7 @@ Dilediğiniz gibi kullanabilir, geliştirebilir ve paylaşabilirsiniz.
 ## Dark Mode
 
 <img width="1902" height="857" alt="Dark mode" src="https://github.com/user-attachments/assets/51b37db0-d069-4380-8368-fdcbe3b5a43a" />
+
 
 
 

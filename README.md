@@ -1,4 +1,3 @@
-# 📊 JavaScript Spreadsheet Application
 
 **Gelişmiş Web Tabanlı Spreadsheet (Elektronik Tablo) Uygulaması**
 
@@ -181,4 +180,5 @@ Dilediğiniz gibi kullanabilir, geliştirebilir ve paylaşabilirsiniz.
 
 ## Dark Mode
 <img width="1898" height="878" alt="SpreadSheet-1" src="https://github.com/user-attachments/assets/3233ffa7-d6a8-41d1-b9c7-9e6ea35862ba" />
+
 

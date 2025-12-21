@@ -3,7 +3,7 @@
 
 Bu proje, **freeCodeCamp Spreadsheet projesi** temel alınarak geliştirilmiş; tamamen **Vanilla JavaScript, HTML ve CSS** kullanılarak oluşturulmuş modern, hızlı ve fonksiyonel bir web tabanlı spreadsheet uygulamasıdır.
 
-Excel benzeri formül hesaplama motoru, gelişmiş hücre yönetimi ve kullanıcı dostu arayüz özelliklerini bir araya getirir.
+Excel benzeri formül hesaplama motoru ,işlevsel birçok özelliği ve kullanıcı dostu arayüz özelliklerini bir araya getirir.
 
 ---
 ## DEMO LİNKİ
@@ -178,6 +178,7 @@ MIT Lisanslıdır.
 ## Dark Mode
 
 <img width="1902" height="857" alt="Dark mode" src="https://github.com/user-attachments/assets/51b37db0-d069-4380-8368-fdcbe3b5a43a" />
+
 
 
 

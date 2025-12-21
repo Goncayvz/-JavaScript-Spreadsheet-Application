@@ -178,10 +178,14 @@ Dilediğiniz gibi kullanabilir, geliştirebilir ve paylaşabilirsiniz.
 ## Ekran Çıktısı 
 ## Light Mode
 
-<img width="1895" height="885" alt="Speadsheet" src="https://github.com/user-attachments/assets/97908c74-bb46-42e9-bf4a-95064a8fac09" />
+<img width="1905" height="862" alt="lightMode" src="https://github.com/user-attachments/assets/5419f6b1-c7e5-4ab8-906e-d05a545cd527" />
+
 
 ## Dark Mode
-<img width="1898" height="878" alt="SpreadSheet-1" src="https://github.com/user-attachments/assets/3233ffa7-d6a8-41d1-b9c7-9e6ea35862ba" />
+
+<img width="1902" height="857" alt="Dark mode" src="https://github.com/user-attachments/assets/51b37db0-d069-4380-8368-fdcbe3b5a43a" />
+
+
 
 
 

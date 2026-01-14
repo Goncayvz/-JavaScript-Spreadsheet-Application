@@ -213,7 +213,7 @@ body {
 }
 
 .selected-range.primary {
-  border: 3px solid #8706e9 !important;
+  border: 3px solid #02274d !important;
   background-color: #E3F2FD !important;
   box-shadow: 
       0 0 0 1px white,
@@ -1318,4 +1318,590 @@ input, .label {
   #container {
     min-width: auto !important;
   }
+}
+/* ==================== AKILLI GRAFİK SİSTEMİ STİLLERİ ==================== */
+/* styles.css dosyasının EN SONUNA ekleyin */
+
+/* Grafik Butonu */
+.control-btn.chart {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.control-btn.chart:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+/* Grafik Container */
+.chart-container {
+    position: fixed;
+    bottom: 0;
+    right: 20px;
+    width: 800px;
+    max-height: 600px;
+    background: white;
+    border-radius: 12px 12px 0 0;
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+}
+
+.chart-container.active {
+    transform: translateY(0);
+}
+
+.chart-container.minimized {
+    max-height: 60px;
+}
+
+.chart-container.minimized .charts-grid {
+    display: none;
+}
+
+/* Grafik Header */
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 12px 12px 0 0;
+}
+
+.chart-header h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.chart-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.chart-action-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.chart-action-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Grafik Grid */
+.charts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    max-height: 520px;
+    overflow-y: auto;
+}
+
+/* Grafik Kartı */
+.chart-card {
+    background: white;
+    border: 2px solid #f0f0f0;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.chart-card:hover {
+    border-color: #667eea;
+    box-shadow: 0 4px 16px rgba(102, 126, 234, 0.2);
+    transform: translateY(-2px);
+}
+
+.chart-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: #f8f9fa;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.chart-card-header h4 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+}
+
+.chart-card-actions {
+    display: flex;
+    gap: 6px;
+}
+
+.chart-card-btn {
+    background: transparent;
+    border: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    color: #666;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    font-size: 12px;
+}
+
+.chart-card-btn:hover {
+    background: #667eea;
+    color: white;
+}
+
+.chart-card-body {
+    padding: 16px;
+}
+
+.chart-card-body canvas {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 300px;
+}
+
+/* Wizard Modal */
+.chart-wizard-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 9998;
+    animation: fadeIn 0.2s ease;
+}
+
+.chart-wizard {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 700px;
+    max-height: 90vh;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -45%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* Wizard Header */
+.wizard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-radius: 16px 16px 0 0;
+}
+
+.wizard-header h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.wizard-close {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.wizard-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg);
+}
+
+/* Wizard Content */
+.wizard-content {
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto;
+}
+
+.wizard-section {
+    margin-bottom: 30px;
+}
+
+.wizard-section:last-child {
+    margin-bottom: 0;
+}
+
+.wizard-section h4 {
+    margin: 0 0 16px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Grafik Tipi Grid */
+.chart-type-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+}
+
+.chart-type-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 20px;
+    background: #f8f9fa;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.chart-type-option:hover {
+    border-color: #667eea;
+    background: #f5f5ff;
+    transform: translateY(-2px);
+}
+
+.chart-type-option.selected {
+    border-color: #667eea;
+    background: linear-gradient(135deg, #667eea10, #764ba220);
+}
+
+.chart-type-option i {
+    font-size: 32px;
+    color: #667eea;
+}
+
+.chart-type-option span {
+    font-size: 13px;
+    font-weight: 500;
+    color: #333;
+}
+
+.chart-type-option .recommended {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #4CAF50;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 10px;
+    font-weight: 600;
+}
+
+/* Wizard Options */
+.wizard-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.wizard-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 12px;
+    border-radius: 8px;
+    transition: background 0.2s;
+}
+
+.wizard-checkbox:hover {
+    background: #f8f9fa;
+}
+
+.wizard-checkbox input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: #667eea;
+}
+
+.wizard-checkbox span {
+    font-size: 14px;
+    color: #333;
+}
+
+/* Wizard Input */
+.wizard-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+}
+
+.wizard-input:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Wizard Preview */
+#chartPreview {
+    width: 100%;
+    height: 200px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    background: #f8f9fa;
+}
+
+/* Wizard Footer */
+.wizard-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    padding: 20px 30px;
+    background: #f8f9fa;
+    border-top: 1px solid #e0e0e0;
+    border-radius: 0 0 16px 16px;
+}
+
+.wizard-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+}
+
+.wizard-btn-primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.wizard-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.wizard-btn-secondary {
+    background: #e0e0e0;
+    color: #666;
+}
+
+.wizard-btn-secondary:hover {
+    background: #d0d0d0;
+}
+
+/* Scrollbar Styling */
+.charts-grid::-webkit-scrollbar,
+.wizard-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.charts-grid::-webkit-scrollbar-track,
+.wizard-content::-webkit-scrollbar-track {
+    background: #f0f0f0;
+}
+
+.charts-grid::-webkit-scrollbar-thumb,
+.wizard-content::-webkit-scrollbar-thumb {
+    background: #667eea;
+    border-radius: 3px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .chart-container {
+        width: 100%;
+        right: 0;
+        max-height: 500px;
+    }
+    
+    .charts-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .chart-wizard {
+        width: 95%;
+        max-height: 95vh;
+    }
+    
+    .chart-type-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Dark Theme Support */
+[data-theme="dark"] .chart-container {
+    background: #2d2d2d;
+}
+
+[data-theme="dark"] .chart-card {
+    background: #3d3d3d;
+    border-color: #4d4d4d;
+}
+
+[data-theme="dark"] .chart-card-header {
+    background: #3d3d3d;
+    border-color: #4d4d4d;
+}
+
+[data-theme="dark"] .chart-card-header h4 {
+    color: #fff;
+}
+
+[data-theme="dark"] .chart-wizard {
+    background: #2d2d2d;
+}
+
+[data-theme="dark"] .wizard-content {
+    background: #2d2d2d;
+}
+
+[data-theme="dark"] .wizard-section h4 {
+    color: #fff;
+}
+
+[data-theme="dark"] .chart-type-option {
+    background: #3d3d3d;
+    border-color: #4d4d4d;
+}
+
+[data-theme="dark"] .chart-type-option:hover {
+    background: #4d4d4d;
+}
+
+[data-theme="dark"] .wizard-checkbox span {
+    color: #fff;
+}
+
+[data-theme="dark"] .wizard-input {
+    background: #3d3d3d;
+    border-color: #4d4d4d;
+    color: #fff;
+}
+
+[data-theme="dark"] #chartPreview {
+    background: #3d3d3d;
+    border-color: #4d4d4d;
+}
+#showChartBtn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    margin-left: 10px;
+    transition: all 0.3s;
+    white-space: nowrap;
+}
+
+#showChartBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+#showChartBtn:active {
+    transform: translateY(0);
+}
+
+/* ==================== GRAFİK PENCERESİ ANİMASYONLARI ==================== */
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -48%) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* ==================== RESPONSIVE DÜZENLEMELER ==================== */
+
+@media (max-width: 768px) {
+    #chartWindow {
+        width: 95% !important;
+        max-height: 90vh !important;
+    }
+    
+    #showChartBtn {
+        padding: 6px 12px;
+        font-size: 13px;
+        margin-left: 5px;
+    }
+    
+    .formula-bar {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
 }

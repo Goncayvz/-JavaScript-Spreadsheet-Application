@@ -86,8 +86,8 @@
         <i class="fas fa-question-circle"></i> Yardım
       </button>
       <button class="control-btn theme" id="themeBtn">
-    <i class="fas fa-moon"></i> Tema Değiştir
-</button>
+        <i class="fas fa-moon"></i> Tema Değiştir
+      </button>
       <button class="control-btn demo" id="demoBtn">
         <i class="fas fa-rocket"></i> Demo Veriler
       </button>
@@ -95,7 +95,6 @@
 
     <!-- Formula Bar -->
     <div class="formula-bar">
-      <div class="cell-display" id="currentCellDisplay">A1</div>
       <input type="text" id="formulaInput" placeholder="Formül girin (örn: =SUM(A1:A3))">
       <button id="applyFormulaBtn">Uygula</button>
     </div>
@@ -105,7 +104,6 @@
       <div id="container">
         <div class="loading">Spreadsheet yükleniyor...</div>
       </div>
-      <!-- Status bar JavaScript ile eklenecek -->
     </div>
 
     <!-- Footer -->
@@ -113,16 +111,15 @@
       <p><i class="fas fa-code"></i> Saf JavaScript ile geliştirildi • Fonksiyonel Programlama Yaklaşımı</p>
     </footer>
 
-    <!-- Tooltip div'i (JavaScript ile kullanılacak) -->
+    <!-- Tooltip div'i  -->
     <div id="tooltip" class="tooltip"></div>
-
     <!-- Script dosyaları -->
     <script src="./errorHandler.js"></script>
     <script src="./script.js"></script>
 
     <!-- Ekstra script'ler -->
     <script>
-      // Sayfa yüklendiğinde loading mesajını kaldırır
+      // Sayfa yüklendiğinde loading mesajını kaldır
       window.addEventListener('load', function() {
         const loading = document.querySelector('.loading');
         if (loading) {
@@ -139,7 +136,9 @@
       // Global error handler
       window.addEventListener('error', function(e) {
         console.error('Global hata:', e.error);
-        showTooltipMessage('Hata oluştu: ' + e.error.message, 'error');
+        if (typeof showTooltipMessage === 'function') {
+          showTooltipMessage('Hata oluştu: ' + e.error.message, 'error');
+        }
       });
 
       // Klavye kısayolları
@@ -176,7 +175,6 @@
           }
         }
         
-      
         // Ctrl+P: Performance
         if (e.ctrlKey && e.key === 'p') {
           e.preventDefault();
@@ -192,6 +190,14 @@
             showErrors();
           }
         }
+        
+        // Ctrl+H: Show help
+        if (e.ctrlKey && e.key === 'h') {
+          e.preventDefault();
+          if (typeof showHelp === 'function') {
+            showHelp();
+          }
+        }
       });
 
       // Formül input'u için enter tuşu desteği
@@ -203,17 +209,23 @@
           formulaInput.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
               e.preventDefault();
-              applyFormula();
+              if (typeof applyFormula === 'function') {
+                applyFormula();
+              }
             }
           });
         }
         
         if (applyFormulaBtn) {
-          applyFormulaBtn.addEventListener('click', applyFormula);
+          applyFormulaBtn.addEventListener('click', function() {
+            if (typeof applyFormula === 'function') {
+              applyFormula();
+            }
+          });
         }
       });
 
-      // Buton event listener'ları
+      // Buton event listener'ları - DÜZELTİLMİŞ VERSİYON
       document.addEventListener('DOMContentLoaded', function() {
         // Buton referansları
         const undoBtn = document.getElementById('undoBtn');
@@ -224,9 +236,9 @@
         const clearBtn = document.getElementById('clearBtn');
         const helpBtn = document.getElementById('helpBtn');
         const demoBtn = document.getElementById('demoBtn');
-        const selectBtn = document.getElementById('selectBtn');
         const copyBtn = document.getElementById('copyBtn');
         const pasteBtn = document.getElementById('pasteBtn');
+        const themeBtn = document.getElementById('themeBtn');
         
         // Event listener'lar
         if (undoBtn) undoBtn.addEventListener('click', () => {
@@ -253,56 +265,51 @@
           if (typeof clearAll === 'function') clearAll();
         });
         
-        if (helpBtn) helpBtn.addEventListener('click', () => {
-          if (typeof showHelp === 'function') showHelp();
-        });
-        // Tema butonu event listener'ı - GÜNCELLENMİŞ
-const themeBtn = document.getElementById('themeBtn');
-if (themeBtn) {
-    // Sayfa yüklendiğinde buton ikonunu güncelle
-    setTimeout(() => {
-        const currentTheme = document.body.getAttribute('data-theme') || 'light';
-        updateThemeButtonIcon(currentTheme);
-    }, 100);
-    
-    themeBtn.addEventListener('click', () => {
-        if (typeof toggleTheme === 'function') {
-            toggleTheme();
-            
-            // Tema değişikliği sonrası buton ikonunu güncelle
-            setTimeout(() => {
-                const newTheme = document.body.getAttribute('data-theme') || 'light';
-                updateThemeButtonIcon(newTheme);
-            }, 50);
-        } else {
-            showTooltipMessage('Tema fonksiyonu henüz yüklenmedi!', 'warning');
+        // YARDIM BUTONU FIX - YENİ EVENT LISTENER
+        if (helpBtn) {
+          helpBtn.addEventListener('click', () => {
+            console.log('Yardım butonuna tıklandı');
+            if (typeof showHelp === 'function') {
+              showHelp();
+            } else {
+              console.error('showHelp fonksiyonu tanımlı değil!');
+              if (typeof showTooltipMessage === 'function') {
+                showTooltipMessage('Yardım sistemi henüz yüklenmedi!', 'warning');
+              }
+            }
+          });
         }
-    });
-}
-
-function updateThemeButtonIcon(theme) {
-    const themeBtn = document.getElementById('themeBtn');
-    if (themeBtn) {
-        if (theme === 'dark') {
-            themeBtn.innerHTML = '<i class="fas fa-sun"></i> Aydınlık Mod';
-            themeBtn.title = 'Aydınlık temaya geç';
-        } else {
-            themeBtn.innerHTML = '<i class="fas fa-moon"></i> Karanlık Mod';
-            themeBtn.title = 'Karanlık temaya geç';
-        }
-    }
-}
         
-        if (demoBtn) demoBtn.addEventListener('click', loadDemoData);
-        if (selectBtn) selectBtn.addEventListener('click', () => {
-          if (typeof startRangeSelection === 'function') startRangeSelection();
+        // TEMA BUTONU FIX
+        if (themeBtn) {
+          themeBtn.addEventListener('click', () => {
+            console.log('Tema butonuna tıklandı');
+            if (typeof toggleTheme === 'function') {
+              toggleTheme();
+            } else {
+              console.error('toggleTheme fonksiyonu tanımlı değil!');
+              if (typeof showTooltipMessage === 'function') {
+                showTooltipMessage('Tema sistemi henüz yüklenmedi!', 'warning');
+              }
+            }
+          });
+        }
+        
+        if (demoBtn) demoBtn.addEventListener('click', () => {
+          if (typeof loadDemoData === 'function') {
+            loadDemoData();
+          }
         });
+        
         if (copyBtn) copyBtn.addEventListener('click', () => {
           if (typeof copySelection === 'function') copySelection();
         });
+        
         if (pasteBtn) pasteBtn.addEventListener('click', () => {
           if (typeof pasteSelection === 'function') pasteSelection();
         });
+        
+        console.log('Buton event listener\'ları yüklendi');
       });
 
       // Tooltip mesajı gösterme fonksiyonu
@@ -326,6 +333,30 @@ function updateThemeButtonIcon(theme) {
           const style = document.createElement('style');
           style.id = 'tooltip-styles';
           style.textContent = `
+            .tooltip-message {
+              position: fixed;
+              top: 20px;
+              right: 20px;
+              padding: 12px 20px;
+              border-radius: 6px;
+              color: white;
+              font-weight: 500;
+              z-index: 10000;
+              box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+              animation: slideIn 0.3s ease;
+              max-width: 300px;
+              word-wrap: break-word;
+            }
+            @keyframes slideIn {
+              from {
+                transform: translateX(100%);
+                opacity: 0;
+              }
+              to {
+                transform: translateX(0);
+                opacity: 1;
+              }
+            }
             .tooltip-message.error {
               background: #f44336;
             }
@@ -394,17 +425,6 @@ function updateThemeButtonIcon(theme) {
             'D7': '=AVERAGE(D2:D4)',
             'E7': '=AVERAGE(E2:E4)',
             
-            'A9': 'Örnek Hatalar:',
-            'B9': '=1/0',
-            'C9': '#DIV_ZERO',
-            'B10': '=SYNTAX_ERROR(',
-            'C10': '#SYNTAX',
-            'B11': '=A1000+B1000',
-            'C11': '#REFERENCE',
-            'B12': '=CALC_TIMEOUT()',
-            'C12': '#CALC_TIMEOUT',
-            'B13': '=INFINITE_LOOP()',
-            'C13': '#CALC_INFINITE_LOOP'
           };
           
           // Demo verilerini hücrelere yerleştir

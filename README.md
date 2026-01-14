@@ -1,190 +1,300 @@
+# 📊 Fonksiyonel Spreadsheet Uygulaması
 
-## 📊Gelişmiş Web Tabanlı Spreadsheet (Elektronik Tablo) Uygulaması
+<div align="center">
 
-Bu proje, **freeCodeCamp Spreadsheet projesi** temel alınarak geliştirilmiş; tamamen **Vanilla JavaScript, HTML ve CSS** kullanılarak oluşturulmuş modern, hızlı ve fonksiyonel bir web tabanlı spreadsheet uygulamasıdır.
+![Spreadsheet Banner](https://img.shields.io/badge/Spreadsheet-Application-blue?style=for-the-badge)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow?style=for-the-badge&logo=javascript)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
 
-Excel benzeri formül hesaplama motoru ,işlevsel birçok özelliği ve kullanıcı dostu arayüz özelliklerini bir araya getirir.
+**Saf JavaScript ile geliştirilmiş, fonksiyonel programlama yaklaşımlı modern bir spreadsheet uygulaması**
 
----
-## DEMO LİNKİ
-https://goncayvz.github.io/-JavaScript-Spreadsheet-Application
+[Canlı Demo](#-canlı-demo) • [Özellikler](#-özellikler) • [Kurulum](#-kurulum) • [Kullanım](#-kullanım)
 
-## 🚀 Özellikler
-
-### 📊 Gelişmiş Hesaplama Motoru
-
-* Excel uyumlu formüller
-  `SUM`, `AVERAGE`, `MAX`, `MIN`, `COUNT`, `MEDIAN`
-* Dinamik hücre referansları
-  `A1`, `B2`, `A1:A10` gibi aralık desteği
-* Gerçek zamanlı hesaplama
-* Gelişmiş hata yönetimi:
-
-  * Sıfıra bölme
-  * Syntax hataları
-  * Geçersiz referanslar
-  * Döngüsel (sonsuz) referanslar
+</div>
 
 ---
 
-### 🎨 Modern & Responsive Arayüz
+## 🎯 Hakkında
 
-* 🌙 Koyu / ☀️ Açık tema desteği
-* Formül çubuğu
-* Durum çubuğu (seçili hücre bilgileri)
-* Tam klavye navigasyonu:
-  * Ok tuşları
-  * Enter / Tab
-  * F2 ile düzenleme
-  *Gelişmiş formül desteği
----
+Bu proje, **[freeCodeCamp](https://www.freecodecamp.org/)** JavaScript Algorithms and Data Structures sertifikasyon programındaki Spreadsheet projesini baz alarak geliştirilmiş, **tamamen yeniden tasarlanmış ve genişletilmiş** modern bir web uygulamasıdır.
 
-### 🔧 Profesyonel Araçlar
+### 🌟 Neden Bu Proje?
 
-* Kopyala / Yapıştır (`Ctrl + C`, `Ctrl + V`)
-* Geri Al / İleri Al (`Ctrl + Z`, `Ctrl + Y`)
-* CSV dışa aktarma
-* Demo veri yükleme
-* Performans ve kullanım istatistikleri
+- ✅ **Sıfır framework/library** - Saf JavaScript ile yazılmış
+- ✅ **Fonksiyonel programlama** - Modern JavaScript best practices
+- ✅ **Excel-benzeri deneyim** - Tanıdık arayüz ve özellikler
+- ✅ **Eğitim amaçlı** - Kodlar temiz ve yorumlu
+- ✅ **Açık kaynak** - Özgürce kullanın ve geliştirin
 
 ---
 
-## 🛠️ Kurulum
+## ✨ Özellikler
 
-Depoyu klonlayın:
+### 📊 Temel Özellikler
+
+- **990 Hücreli Grid** (A-J sütunları, 1-99 satırları)
+- **Excel Formül Motoru** - 20+ yerleşik fonksiyon
+- **Hücre Formatlama** - Formüller, sayılar, metin
+- **Kopyala/Yapıştır** - Tam hücre kopyalama desteği
+- **Geri Al/İleri Al** - Sınırsız undo/redo
+- **CSV Dışa Aktarma** - Verilerinizi indirin
+
+### 🎨 Gelişmiş Özellikler
+
+#### 📈 Grafik Sistemi
+- **3 Grafik Tipi**: Çubuk, Çizgi, Pasta
+- **Akıllı Veri Analizi** - Otomatik grafik önerisi
+- **PNG Export** - Grafikleri resim olarak indirin
+- **Canvas-based** - Yüksek kaliteli render
+
+#### 🤖 AI-Powered Formül Yardımı
+- **Akıllı Formül Asistanı** - F1 ile hızlı erişim
+- **40+ Formül Dokümantasyonu** - Detaylı açıklamalar ve örnekler
+- **Kategorize Yardım** - Matematik, İstatistik, Metin, Tarih
+- **Arama Özelliği** - İstediğiniz formülü bulun
+
+#### 💬 Basit Chatbot
+- **Spreadsheet Asistanı** - Formül yardımı
+- **Önceden tanımlı cevaplar** - Hızlı yanıtlar
+- **Hızlı soru önerileri** - Tek tıkla sorular
+
+#### 🎨 Tema Sistemi
+- **Karanlık/Aydınlık Mod** - Göz yorgunluğunu azaltın
+- **Otomatik Algılama** - Sistem temasını takip eder
+- **Tercih Kaydetme** - Seçiminiz saklanır
+
+#### ⚡ Performans & UX
+- **Hata Yönetimi** - 8 farklı hata tipi desteği
+- **Gerçek Zamanlı Hesaplama** - Anlık formül güncellemesi
+- **Performans İzleme** - Detaylı istatistikler
+- **Klavye Kısayolları** - Hızlı navigasyon
+
+---
+
+## 🚀 Kurulum
+
+### Gereksinimler
+
+- Modern bir web tarayıcısı (Chrome, Firefox, Safari, Edge)
+- Yerel bir HTTP sunucusu (opsiyonel)
+
+### Hızlı Başlangıç
 
 ```bash
-git clone https://github.com/Goncayvz/-JavaScript-Spreadsheet-Application.git
+# 1. Projeyi klonlayın
+git clone https://github.com/kullaniciadi/fonksiyonel-spreadsheet.git
+cd fonksiyonel-spreadsheet
+
+# 2. Tarayıcıda açın
+# Basit yöntem
+open index.html
+
+# VEYA yerel sunucu kullanın
+python -m http.server 8000
+# http://localhost:8000
 ```
 
-Ardından `index.html` dosyasını bir tarayıcıda açmanız yeterlidir.
-Herhangi bir ek bağımlılık veya kurulum gerektirmez.
-
 ---
 
-## 🧩 Temel Kullanım
+## 📖 Kullanım
 
-* **Hücre Seçimi:** Tıklayarak veya ok tuşları ile
-* **Veri Girişi:** Seçili hücreye doğrudan yazın
-* **Formül Kullanımı:** `=` ile başlayın
-  Örnek: `=SUM(A1:A5)`
-* **Düzenleme Modu:** Çift tıklayın veya `F2`
-* **Onaylama:** `Enter`
+### Temel Kullanım
 
----
+#### 1️⃣ Hücre Seçimi
+- **Tek tıklama** - Tek hücre seçimi
+- **Sürükleme** - Çoklu hücre seçimi
+- **Ctrl + Click** - Çoklu seçim
+- **Ok tuşları** - Klavye ile gezinme
 
-## ⌨️ Klavye Kısayolları
+#### 2️⃣ Veri Girişi
+```javascript
+// Sayı
+42
 
-| Kısayol     | Açıklama                  |
-| ----------- | ------------------------- |
-| Ctrl + C    | Kopyala                   |
-| Ctrl + V    | Yapıştır                  |
-| Ctrl + Z    | Geri al                   |
-| Ctrl + Y    | İleri al                  |
-| Ctrl + S    | CSV olarak indir          |
-| F2          | Hücreyi düzenle           |
-| F9          | Excel uyumluluk testi     |
-| ESC         | Düzenlemeyi iptal et      |
-| Tab         | Sağdaki hücre             |
-| Shift + Tab | Soldaki hücre             |
-| Enter       | Kaydet ve alt hücreye geç |
+// Metin
+Merhaba Dünya
+
+// Formül
+=SUM(A1:A10)
+```
+
+#### 3️⃣ Formül Kullanımı
+```javascript
+// Toplama
+=SUM(A1:A5)
+
+// Ortalama
+=AVERAGE(B1:B10)
+
+// Koşullu
+=IF(C1>100, "Yüksek", "Düşük")
+```
+
+### Klavye Kısayolları
+
+| Kısayol | Açıklama |
+|---------|----------|
+| `Enter` | Hücreyi düzenle |
+| `ESC` | İptal et |
+| `Tab` | Sağ hücre |
+| `Ctrl + C` | Kopyala |
+| `Ctrl + V` | Yapıştır |
+| `Ctrl + Z` | Geri al |
+| `Ctrl + Y` | İleri al |
+| `Ctrl + S` | CSV kaydet |
+| `F1` | Formül yardımı |
+| `F9` | Test |
 
 ---
 
 ## 📐 Desteklenen Formüller
 
-| Fonksiyon | Açıklama             | Örnek             |
-| --------- | -------------------- | ----------------- |
-| SUM       | Toplama              | `=SUM(A1:A10)`    |
-| AVERAGE   | Ortalama             | `=AVERAGE(B1:B5)` |
-| MAX       | Maksimum             | `=MAX(C1:C20)`    |
-| MIN       | Minimum              | `=MIN(D1:D15)`    |
-| COUNT     | Sayısal hücre sayısı | `=COUNT(E1:E100)` |
-| MEDIAN    | Medyan               | `=MEDIAN(F1:F10)` |
+### 🔢 Matematik
+
+| Fonksiyon | Açıklama | Örnek |
+|-----------|----------|-------|
+| `SUM` | Toplama | `=SUM(A1:A10)` |
+| `AVERAGE` | Ortalama | `=AVERAGE(B1:B5)` |
+| `MAX` | En büyük | `=MAX(C1:C10)` |
+| `MIN` | En küçük | `=MIN(D1:D10)` |
+| `POWER` | Üs | `=POWER(2, 3)` |
+| `SQRT` | Karekök | `=SQRT(16)` |
+| `ROUND` | Yuvarlama | `=ROUND(3.14, 2)` |
+| `ABS` | Mutlak değer | `=ABS(-5)` |
+
+### 📊 İstatistik
+
+| Fonksiyon | Açıklama | Örnek |
+|-----------|----------|-------|
+| `MEDIAN` | Medyan | `=MEDIAN(A1:A10)` |
+| `STDEV` | Std. sapma | `=STDEV(B1:B10)` |
+| `COUNT` | Sayma | `=COUNT(C1:C10)` |
+
+### 🎯 Mantık
+
+| Fonksiyon | Açıklama | Örnek |
+|-----------|----------|-------|
+| `IF` | Koşul | `=IF(A1>10, "Büyük", "Küçük")` |
+| `AND` | Ve | `=AND(A1>0, A1<100)` |
+| `OR` | Veya | `=OR(B1="A", B1="B")` |
+
+### 📝 Metin
+
+| Fonksiyon | Açıklama | Örnek |
+|-----------|----------|-------|
+| `CONCAT` | Birleştir | `=CONCAT(A1, B1)` |
+| `LEN` | Uzunluk | `=LEN(A1)` |
+| `UPPER` | Büyük harf | `=UPPER("a")` |
 
 ---
 
-## ⚠️ Hata Türleri
+## 🛠️ Teknolojiler
 
-| Hata Kodu             | Açıklama                 |
-| --------------------- | ------------------------ |
-| `#SYNTAX`             | Formül sözdizimi hatası  |
-| `#REFERENCE`          | Geçersiz hücre referansı |
-| `#DIV_ZERO`           | Sıfıra bölme             |
-| `#CALC_TIMEOUT`       | Hesaplama zaman aşımı    |
-| `#CALC_INFINITE_LOOP` | Döngüsel referans        |
-
----
-
-## 🧠 Teknik Detaylar
-
-### Mimari
-
-* Vanilla JavaScript (harici kütüphane yok)
-* Fonksiyonel programlama yaklaşımı
-* Modüler dosya yapısı
-* Event-driven mimari
-
-### Performans
-
-* Hesaplama önbelleği (cache)
-* Optimize DOM güncellemeleri
-* Bellek sızıntısı önleme
-* Debounced input işleme
+- **HTML5** - Semantik yapı
+- **CSS3** - Modern styling (Grid, Flexbox)
+- **Vanilla JavaScript (ES6+)** - Sıfır framework
+- **Canvas API** - Grafik çizimi
+- **LocalStorage API** - Veri saklama
+- **Font Awesome 6.4.0** - İkonlar
 
 ---
 
-## 🌐 Tarayıcı Uyumluluğu
+## 📁 Proje Yapısı
 
-* Chrome 90+
-* Firefox 88+
-* Edge 90+
-* Safari 14+
-* Mobil & Tablet uyumlu
-* ARIA destekli erişilebilirlik
-
----
-
-## 📊 Demo Veri Seti
-
-Uygulama, hızlı test ve öğrenme için hazır demo verileri içerir:
-
-* Satış verileri
-* Toplam & ortalama hesaplamaları
-* Tüm hata türlerine örnekler
-* Formül kullanım senaryoları
-
-**Demo verilerini yüklemek için:**
-👉 *“Demo Veriler”* butonuna tıklayın.
+```
+fonksiyonel-spreadsheet/
+│
+├── index.html           # Ana HTML
+├── styles.css           # Ana CSS
+├── script.js            # Ana JavaScript
+├── errorHandler.js      # Hata yönetimi
+│
+└── README.md           # Bu dosya
+```
 
 ---
 
-## 📄 Lisans
+## 💻 Geliştirme
 
-Bu proje eğitim ve geliştirme amaçlıdır.
-MIT Lisanslıdır.
+### Debug Modu
+
+```javascript
+// Console'da
+window.ENV.DEBUG_MODE = true;
+
+// Performans göster
+showPerformance();
+
+// Test çalıştır
+runExcelTest();
+```
+
 ---
 
-💡 *Her türlü geri bildirim ve katkıya açıktır.*
+## 🤝 Katkıda Bulunma
+
+1. Fork edin
+2. Feature branch oluşturun (`git checkout -b feature/amazing`)
+3. Commit edin (`git commit -m 'feat: Add feature'`)
+4. Push edin (`git push origin feature/amazing`)
+5. Pull Request açın
+
+### Commit Kuralları
+
+```bash
+feat: Yeni özellik
+fix: Bug düzeltme
+docs: Dokümantasyon
+style: Kod formatı
+refactor: Kod iyileştirme
+test: Test ekleme
+perf: Performans
+```
+---
+
+## 📊 Proje İstatistikleri
+
+```
+📝 Toplam Satır     : ~5,000
+🎨 CSS              : ~1,800
+💻 JavaScript       : ~3,000
+📁 Dosya            : 4
+📦 Bağımlılık       : 0
+```
+
+---
 
 
+## 🙏 Teşekkürler
 
-## Ekran Çıktısı 
-## Light Mode
+- **[freeCodeCamp](https://www.freecodecamp.org/)** - Orijinal proje
+- **[MDN Web Docs](https://developer.mozilla.org/)** - Dokümantasyon
+- **[Font Awesome](https://fontawesome.com/)** - İkonlar
 
-<img width="1905" height="862" alt="lightMode" src="https://github.com/user-attachments/assets/5419f6b1-c7e5-4ab8-906e-d05a545cd527" />
+---
 
+## 📞 İletişim
 
-## Dark Mode
+**Proje Sahibi:** [Adınız]
 
-<img width="1902" height="857" alt="Dark mode" src="https://github.com/user-attachments/assets/51b37db0-d069-4380-8368-fdcbe3b5a43a" />
+- 📧 Email: email@example.com
+- 🐙 GitHub: [@kullaniciadi](https://github.com/kullaniciadi)
+- 💼 LinkedIn: [linkedin.com/in/kullaniciadi](https://linkedin.com/in/kullaniciadi)
 
+**Proje Linki:** [github.com/kullaniciadi/fonksiyonel-spreadsheet](https://github.com/kullaniciadi/fonksiyonel-spreadsheet)
 
+---
 
+## ⭐ Yıldızlayın!
 
+Projeyi beğendiyseniz ⭐ vermeyi unutmayın!
 
+<div align="center">
 
+**Made with ❤️ and ☕**
 
+![Footer](https://img.shields.io/badge/Thanks%20for-Visiting-blue?style=for-the-badge)
 
-
-
+</div>

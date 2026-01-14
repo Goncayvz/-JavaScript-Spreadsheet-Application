@@ -11,8 +11,6 @@
 **Saf JavaScript ile geliştirilmiş, fonksiyonel programlama yaklaşımlı modern bir spreadsheet uygulaması**
 
 [Canlı Demo](#-canlı-demo) • [Özellikler](#-özellikler) • [Kurulum](#-kurulum) • [Kullanım](#-kullanım)
-#Demo 
- Linki:(https://goncayvz.github.io/-JavaScript-Spreadsheet-Application)
 </div>
 
 ---
@@ -20,6 +18,9 @@
 ## 🎯 Hakkında
 
 Bu proje, **[freeCodeCamp](https://www.freecodecamp.org/)** JavaScript Algorithms and Data Structures sertifikasyon programındaki Spreadsheet projesini baz alarak geliştirilmiş, **tamamen yeniden tasarlanmış ve genişletilmiş** modern bir web uygulamasıdır.
+
+##Demo 
+ Linki:(https://goncayvz.github.io/-JavaScript-Spreadsheet-Application)
 
 ### 🌟 Neden Bu Proje?
 
@@ -280,6 +281,7 @@ Projeyi beğendiyseniz ⭐ vermeyi unutmayın!
 <img width="1226" height="742" alt="Bar ss Spreashet" src="https://github.com/user-attachments/assets/e08e57ec-869a-43a3-ae12-952681b5a7ec" />
 #Formül yardımı
 <img width="1350" height="722" alt="FormülKütüphanesi" src="https://github.com/user-attachments/assets/95e4c3f0-2753-49e5-a33b-f3654d2947f9" />
+
 
 
 

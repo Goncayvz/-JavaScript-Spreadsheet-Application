@@ -232,16 +232,6 @@ showPerformance();
 runExcelTest();
 ```
 
----
-
-## 🤝 Katkıda Bulunma
-
-1. Fork edin
-2. Feature branch oluşturun (`git checkout -b feature/amazing`)
-3. Commit edin (`git commit -m 'feat: Add feature'`)
-4. Push edin (`git push origin feature/amazing`)
-5. Pull Request açın
-
 ### Commit Kuralları
 
 ```bash
@@ -299,3 +289,4 @@ Projeyi beğendiyseniz ⭐ vermeyi unutmayın!
 ![Footer](https://img.shields.io/badge/Thanks%20for-Visiting-blue?style=for-the-badge)
 
 </div>
+

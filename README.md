@@ -105,9 +105,9 @@ python -m http.server 8000
 
 #### 1️⃣ Hücre Seçimi
 - **Tek tıklama** - Tek hücre seçimi
-- **Sürükleme** - Çoklu hücre seçimi
 - **Ctrl + Click** - Çoklu seçim
-- **Ok tuşları** - Klavye ile gezinme
+- **Ok tuşları** - Klavye ile 
+-**Enter** - kaydet ve başka hücreye geç
 
 #### 2️⃣ Veri Girişi
 ```javascript
@@ -280,4 +280,5 @@ Projeyi beğendiyseniz ⭐ vermeyi unutmayın!
 <img width="1226" height="742" alt="Bar ss Spreashet" src="https://github.com/user-attachments/assets/e08e57ec-869a-43a3-ae12-952681b5a7ec" />
 #Formül yardımı
 <img width="1350" height="722" alt="FormülKütüphanesi" src="https://github.com/user-attachments/assets/95e4c3f0-2753-49e5-a33b-f3654d2947f9" />
+
 

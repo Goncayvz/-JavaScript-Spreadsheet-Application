@@ -261,22 +261,10 @@ perf: Performans
 ## 🙏 Teşekkürler
 
 - **[freeCodeCamp](https://www.freecodecamp.org/)** - Orijinal proje
-- **[MDN Web Docs](https://developer.mozilla.org/)** - Dokümantasyon
 - **[Font Awesome](https://fontawesome.com/)** - İkonlar
 
 ---
 
-## 📞 İletişim
-
-**Proje Sahibi:** [Adınız]
-
-- 📧 Email: email@example.com
-- 🐙 GitHub: [@kullaniciadi](https://github.com/kullaniciadi)
-- 💼 LinkedIn: [linkedin.com/in/kullaniciadi](https://linkedin.com/in/kullaniciadi)
-
-**Proje Linki:** [github.com/kullaniciadi/fonksiyonel-spreadsheet](https://github.com/kullaniciadi/fonksiyonel-spreadsheet)
-
----
 
 ## ⭐ Yıldızlayın!
 
@@ -289,4 +277,11 @@ Projeyi beğendiyseniz ⭐ vermeyi unutmayın!
 ![Footer](https://img.shields.io/badge/Thanks%20for-Visiting-blue?style=for-the-badge)
 
 </div>
-
+#Aydınlık Tema
+<img width="1898" height="883" alt="Güncel SS Spreatsheet ☀️" src="https://github.com/user-attachments/assets/28655637-ffa1-4706-8278-7db8c433f69e" />
+#Dark tema
+<img width="1887" height="861" alt="Güncel ssSpreatsheet" src="https://github.com/user-attachments/assets/5929e33f-9009-455d-a5db-f6994f188915" />
+#Grafik sistemi
+<img width="1226" height="742" alt="Bar ss Spreashet" src="https://github.com/user-attachments/assets/e08e57ec-869a-43a3-ae12-952681b5a7ec" />
+#Formül yardımı
+<img width="1350" height="722" alt="FormülKütüphanesi" src="https://github.com/user-attachments/assets/95e4c3f0-2753-49e5-a33b-f3654d2947f9" />

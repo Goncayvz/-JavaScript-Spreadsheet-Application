@@ -269,12 +269,7 @@ perf: Performans
 ## ⭐ Yıldızlayın!
 
 Projeyi beğendiyseniz ⭐ vermeyi unutmayın!
-
-<div align="center">
-
-**Made with ❤️ and ☕**
-
-![Footer](https://img.shields.io/badge/Thanks%20for-Visiting-blue?style=for-the-badge)
+##Proje Görüntüleri
 
 </div>
 #Aydınlık Tema
@@ -285,3 +280,4 @@ Projeyi beğendiyseniz ⭐ vermeyi unutmayın!
 <img width="1226" height="742" alt="Bar ss Spreashet" src="https://github.com/user-attachments/assets/e08e57ec-869a-43a3-ae12-952681b5a7ec" />
 #Formül yardımı
 <img width="1350" height="722" alt="FormülKütüphanesi" src="https://github.com/user-attachments/assets/95e4c3f0-2753-49e5-a33b-f3654d2947f9" />
+
